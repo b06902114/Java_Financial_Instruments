@@ -14,6 +14,25 @@ Open with Terminal and enter
 ```
 npm run dev
 ```
+Makesure to check that the port your vue.js run on is same with bandend, if no, modified it
+
+open **demo/src/main/java/Esun/demo/controller**
+
+you will see three controller
+
+```java
+
+@RestController
+@CrossOrigin(origins = "http://localhost:5173")
+public class UserController{
+    ...
+}
+
+```
+
+If your Vue.js port is not 5173 , just modified it.
+
+
 
 ## Backend
 Because I link MySQL database, Open demo directories with Java IDE, I am using IntelliJ IDEA.
