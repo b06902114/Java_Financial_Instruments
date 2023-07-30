@@ -3,8 +3,8 @@
 
 Simply we have to directories, frontend is literally frontend and demo is for backend.
 
-## Links
-I made a demo video so that can we can clearly understand what I am doing   [Demo Video](https://youtu.be/GAvpTEBtihY)
+## Demo Video
+I made a demo video so that we can clearly understand what I am doing   [Demo Video](https://youtu.be/GAvpTEBtihY)
 
 
 
