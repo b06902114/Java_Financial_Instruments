@@ -133,6 +133,8 @@ export default {
     },
     methods: {
         getList(){
+            this.amount = 0
+            this.ftotal = 0.1
             fetch(`http://localhost:9000/lists`)
             .then(response => { return response.json();})
             .then(responseData => {
