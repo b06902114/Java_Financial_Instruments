@@ -14,8 +14,6 @@ Open with Terminal and enter
 ```
 npm run dev -- --port 8080
 ```
-Makesure to check that the port your vue.js run on is same with bandend, if no, modified it
-
 open **demo/src/main/java/Esun/demo/controller**
 
 you will see three controller
