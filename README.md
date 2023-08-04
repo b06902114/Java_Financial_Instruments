@@ -12,7 +12,7 @@ I made a demo video so that we can clearly understand what I am doing   [Demo Vi
 Open with Terminal and enter
 
 ```
-npm run dev
+npm run dev -- --port 8080
 ```
 Makesure to check that the port your vue.js run on is same with bandend, if no, modified it
 
