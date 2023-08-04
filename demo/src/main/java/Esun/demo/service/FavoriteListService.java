@@ -15,4 +15,6 @@ public interface FavoriteListService {
     public void deleteFavoriteList(Long id);
 
     public FavoriteList updateFavoriteList(FavoriteList favoriteList);
+
+    public List<FavoriteList> getPersonalList(String id);
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:8080")
 public class UserController {
 
     @Autowired
@@ -56,5 +56,11 @@ public class UserController {
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable("id") String id){
         userService.deleteUser(id);
+    }
+
+    // GET USERS BY STORED PROCEDURE
+    @RequestMapping("/users/procedure/{id}/{sn}")
+    public List<User> getUsersByProcedure(@PathVariable("id") String id, @PathVariable("sn") String sn){
+        return userService.getUsersByProcedure(id, sn);
     }
 }

@@ -117,7 +117,6 @@ export default {
                 fetch(`http://localhost:9000/user/${this.$route.params.id}`)
                 .then(response => { return response.json();})
                 .then(responseData => {
-                    //console.log(responseData);
                     this.user = responseData;
                 })
                 .catch(err => console.log("err"))
@@ -128,16 +127,6 @@ export default {
             .then(res => res.json())
             .then(data => {
                 this.products = data
-                //console.log(data)
-            })
-        },
-        deleteProducts(no){
-            fetch(`http://localhost:9000/product/${no}`, {
-                method: 'DELETE'
-            })
-            .then(data => {
-                //console.log(data)
-                this.getProduct()
             })
         },
         UpdateUser() {

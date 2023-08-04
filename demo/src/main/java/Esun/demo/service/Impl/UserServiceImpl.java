@@ -49,4 +49,7 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User user){
         return userRepository.save(user);
     }
+
+    @Override
+    public List<User> getUsersByProcedure(String a, String b){ return userRepository.getUsersByProcedure(a, b); }
 }

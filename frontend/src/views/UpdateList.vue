@@ -79,7 +79,7 @@
                     num:this.$route.params.num,
                     sn: this.$route.params.sn,
                     id:this.$route.params.id,
-                    quantity:0
+                    quantity:''
                 }
 
             }
@@ -87,19 +87,33 @@
 
         methods: {
             updateList() {
-                fetch(`http://localhost:9000/list_update`, {
-                    method: 'PUT',
-                    headers: {
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(this.L)
+                if(this.L.quantity == 0){
+                    this.deleteList(this.L.num)
+                }
+                else{
+                    fetch(`http://localhost:9000/list_update`, {
+                        method: 'PUT',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(this.L)
+                    })
+                    .then(data => {
+                        alert('Edit Successfully') 
+                        this.$router.push(`/home/list/${this.L.id}`)
+                    })
+                }
+
+            },
+            deleteList(num) {
+                fetch(`http://localhost:9000/list/${num}`, {
+                    method: 'DELETE'
                 })
                 .then(data => {
-                    //console.log(data)
                     alert('Edit Successfully') 
                     this.$router.push(`/home/list/${this.L.id}`)
                 })
-
+        
             },    
 
             GoTo_List() {

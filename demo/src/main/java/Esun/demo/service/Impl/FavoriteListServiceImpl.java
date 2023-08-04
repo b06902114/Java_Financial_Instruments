@@ -47,4 +47,9 @@ public class FavoriteListServiceImpl implements FavoriteListService {
     public FavoriteList updateFavoriteList(FavoriteList favoriteList) {
         return favoriteListRepository.save(favoriteList);
     }
+
+    @Override
+    public List<FavoriteList> getPersonalList(String id){
+        return favoriteListRepository.getPersonalList(id);
+    }
 }

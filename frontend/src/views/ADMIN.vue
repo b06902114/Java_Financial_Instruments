@@ -90,18 +90,18 @@
 
 <script>
 
-//import Navbar from '../components/Navbar.vue';
+
 
 export default {
     name: 'Menu',
     components : {
-        //Navbar
+        
     },
     data(){
         return{
             products: [],
             user: {
-                    id: this.$route.params.id,
+                    id: '',
                     name: '',
                     email: '',
                     account: ''
@@ -110,10 +110,10 @@ export default {
     },
     methods: {
         getUser(){ 
-                fetch(`http://localhost:9000/user/${this.$route.params.id}`)
+                var uid = "ADMIN"
+                fetch(`http://localhost:9000/user/${uid}`)
                 .then(response => { return response.json();})
                 .then(responseData => {
-                    //console.log(responseData);
                     this.user = responseData;
                 })
                 .catch(err => console.log("err"))
@@ -127,7 +127,6 @@ export default {
             .then(res => res.json())
             .then(data => {
                 this.products = data
-                //console.log(data)
             })
         },
         Delete(no){
@@ -135,8 +134,6 @@ export default {
                 method: 'DELETE'
             })
             .then(data => {
-            
-                //console.log(data)
                 this.getProducts()
             })
         },
@@ -151,9 +148,6 @@ export default {
         GoTo_addproduct() {
         },
         // no = sn
-        Add_Product_To_List(no) {
-            this.$router.push(`/home/addlist/${this.user.id}/${no}`)
-        }
     },
     beforeMount(){
         this.getProducts()

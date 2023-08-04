@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:8080")
 public class FavoriteListController {
 
     @Autowired
@@ -22,6 +22,7 @@ public class FavoriteListController {
     }
 
     // Query
+    // This variable id is "num" column in table
     @GetMapping("/list/{id}")
     public FavoriteList getFavoriteListById(@PathVariable("id") Long id){
         return favoriteListService.getFavoriteListById(id);
@@ -44,4 +45,12 @@ public class FavoriteListController {
     public void deleteFavoriteList(@PathVariable("id") Long id){
         favoriteListService.deleteFavoriteList(id);
     }
+
+    // get User's Favorite List By Id. Using Stored Procedure
+    // This variable id is "id" column in table
+    @RequestMapping("/lists/procedure/{id}")
+    public List<FavoriteList> getPersonalList(@PathVariable("id") String id){
+        return favoriteListService.getPersonalList(id);
+    }
+
 }

@@ -16,4 +16,7 @@ public interface UserService {
 
     public User updateUser(User user);
 
+    // stored procedure
+    public List<User> getUsersByProcedure(String a, String b);
+
 }

@@ -31,14 +31,7 @@
             <div class="mx-auto w-25" style="max-width: 100;">
                 <h2 class="text-center mb-3">Enter Quantity</h2>
                 <form @submit.prevent="addList">
-                    <!--ID-->
-                   <!--div class="row">
-                        <div class="col-md-12 form-group mp-3">
-                            <label for="ID" class="form-label">ID</label>
-                            <input type="text" name="ID" id="ID" class="form-control" placeholder="ID" required v-model="user.id">
-                        </div>
-                    </div-->
-                   <!--name-->
+                   <!--Quantity-->
                    <div class="row">
                         <div class="col-md-12 form-group mp-3">
                             <label for="quantity" class="form-label">Quantity</label>
@@ -59,13 +52,11 @@
 </template>
 
 <script>
-    //import Navbar from '../components/Navbar.vue';
     import axios from 'axios';
 
     export default {
         name: 'UpdateUser',
         components: {
-            //Navbar
         },
         data(){
             return {
@@ -78,7 +69,7 @@
                 L: {
                     sn: this.$route.params.no,//
                     id: this.$route.params.id,//
-                    quantity:0
+                    quantity:''
                 }
 
             }
@@ -86,18 +77,47 @@
 
         methods: {
             addList() {
-                fetch('http://localhost:9000/add_list', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.L)
+                // Check already in List or not
+                var AllList = []
+                var find = false
+                fetch(`http://localhost:9000/lists`)
+                .then(response => { return response.json();})
+                .then(responseData => {
+                    AllList = responseData
+                    for(var i = 0; i < AllList.length; i++){
+                        if(AllList[i].sn == this.L.sn && (AllList[i].id).toUpperCase() == (this.L.id).toUpperCase()){
+                            AllList[i].quantity += parseInt(this.L.quantity)
+                            // Already in List , do update
+                            find = true
+                            fetch(`http://localhost:9000/list_update`, {
+                                method: 'PUT',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(AllList[i])
+                            })
+                            .then(data => {                              
+                                this.$router.push(`/home/menu/${this.L.id}`)
+                            })
+                        }
+                    }
+                    // Not in List , do addList
+                    if(!find){
+                        fetch('http://localhost:9000/add_list', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.L)
+                        })
+                        .then(data => {
+                            this.$router.push(`/home/menu/${this.L.id}`)
+                        })
+                    }
                 })
-                .then(data => {
-                    //console.log(data)
-                    //alert(data.message)
-                    this.$router.push(`/home/menu/${this.L.id}`)
-                })
+                
+
+                
             },
        
             GoTo_List() {

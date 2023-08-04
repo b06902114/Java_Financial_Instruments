@@ -13,7 +13,7 @@ public class FavoriteList {
     //User Id
     private String ID;
 
-    // Produt ID
+    // Product ID
     private String SN;
 
     private int quantity;

@@ -32,13 +32,6 @@
             <div class="mx-auto w-25" style="max-width: 100;">
                 <h2 class="text-center mb-3">Update User</h2>
                 <form @submit.prevent="updateUser">
-                    <!--ID-->
-                   <!--div class="row">
-                        <div class="col-md-12 form-group mp-3">
-                            <label for="ID" class="form-label">ID</label>
-                            <input type="text" name="ID" id="ID" class="form-control" placeholder="ID" required v-model="user.id">
-                        </div>
-                    </div-->
                    <!--name-->
                    <div class="row">
                         <div class="col-md-12 form-group mp-3">
@@ -75,13 +68,11 @@
 </template>
 
 <script>
-    //import Navbar from '../components/Navbar.vue';
-    import axios from 'axios';
 
     export default {
         name: 'UpdateUser',
         components: {
-            //Navbar
+         
         },
         data(){
             return {
@@ -100,7 +91,6 @@
                 fetch(`http://localhost:9000/user/${this.$route.params.id}`)
                 .then(response => { return response.json();})
                 .then(responseData => {
-                    //console.log(responseData);
                     this.user = responseData;
                 })
                 .catch(err => console.log("err"))
@@ -116,7 +106,6 @@
                     body: JSON.stringify(this.user)
                 })
                 .then(data => {
-                    //console.log(data)
                     alert('Edit Successfully') 
                     this.$router.push(`/home/menu/${this.user.id}`)
                 })
@@ -133,7 +122,6 @@
 
         beforeMount(){
            this.getUser()
-           //console.log(this.$route.params.name)
         }
     }
 
