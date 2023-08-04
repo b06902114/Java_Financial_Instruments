@@ -30,7 +30,7 @@ public class UserController{
 
 ```
 
-If your Vue.js port is not 5173 , just modified it.
+Please feel free to modify port if 8080 is not the port you are going to use.
 
 
 
