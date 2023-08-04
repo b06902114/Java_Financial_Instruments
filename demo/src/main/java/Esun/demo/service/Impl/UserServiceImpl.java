@@ -50,6 +50,4 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    @Override
-    public List<User> getUsersByProcedure(String a, String b){ return userRepository.getUsersByProcedure(a, b); }
 }

@@ -130,10 +130,14 @@ export default {
             })
         },
         Delete(no){
+            var sn = no
             fetch(`http://localhost:9000/product/${no}`, {
                 method: 'DELETE'
             })
             .then(data => {
+                fetch(`http://localhost:9000/delete/procedure/${sn}`,{
+                    method: 'DELETE'
+                })
                 this.getProducts()
             })
         },

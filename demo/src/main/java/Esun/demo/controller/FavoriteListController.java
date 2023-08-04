@@ -53,4 +53,10 @@ public class FavoriteListController {
         return favoriteListService.getPersonalList(id);
     }
 
+    // Delete List By Sn if ADMIN delete some product
+    @DeleteMapping("delete/procedure/{sn}")
+    public void deleteListBysn(@PathVariable("sn") String sn){
+        favoriteListService.deleteListBySn(sn);
+    }
+
 }

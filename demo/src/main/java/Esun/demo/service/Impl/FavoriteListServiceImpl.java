@@ -52,4 +52,9 @@ public class FavoriteListServiceImpl implements FavoriteListService {
     public List<FavoriteList> getPersonalList(String id){
         return favoriteListRepository.getPersonalList(id);
     }
+
+    @Override
+    public void deleteListBySn(String sn){
+        favoriteListRepository.deleteListBySn(sn);
+    }
 }

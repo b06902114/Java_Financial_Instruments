@@ -11,8 +11,4 @@ import java.util.Map;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, String> {
-
-    @Query(value = "CALL get_users(?, ?)", nativeQuery = true)
-    public List<User> getUsersByProcedure(String a, String b);
-
 }

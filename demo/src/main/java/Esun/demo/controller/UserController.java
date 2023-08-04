@@ -58,9 +58,5 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    // GET USERS BY STORED PROCEDURE
-    @RequestMapping("/users/procedure/{id}/{sn}")
-    public List<User> getUsersByProcedure(@PathVariable("id") String id, @PathVariable("sn") String sn){
-        return userService.getUsersByProcedure(id, sn);
-    }
+
 }

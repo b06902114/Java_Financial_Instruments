@@ -12,4 +12,9 @@ public interface FavoriteListRepository extends CrudRepository<FavoriteList, Lon
 
     @Query(value = "CALL getListsById(?)", nativeQuery = true)
     public List<FavoriteList> getPersonalList(String id);
+
+
+    @Query(value = "CALL deleteListBySn(?)", nativeQuery = true)
+    public void deleteListBySn(String sn);
+
 }
